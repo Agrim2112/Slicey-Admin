@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:slicey_admin/src/blocs/authentication_bloc/authentication_bloc.dart';
 
-import '../modules/auth/views/loginscreen.dart';
+import '../modules/auth/bloc/sign_in_bloc/sign_in_bloc.dart';
+import '../modules/auth/views/sign_in_screen.dart';
 import '../modules/base/views/base_screen.dart';
 import '../modules/home/views/home_screen.dart';
 import '../modules/splash/views/splash_screen.dart';
@@ -24,13 +25,13 @@ GoRouter router (AuthenticationBloc authBloc){
     },
     routes:[
       ShellRoute(
-          navigatorKey: _navKey,
+          navigatorKey: _shellNavigationavKey,
           builder:(context,state,child){
             if(state.fullPath == '/login' || state.fullPath == '/'){
               return child;
             }
             else{
-              return BaseScreen();
+              return BaseScreen(child);
       }
           } ,
           routes: [
@@ -45,7 +46,12 @@ GoRouter router (AuthenticationBloc authBloc){
                 path: '/login',
                 builder: (context,state)=> BlocProvider<AuthenticationBloc>.value(
                     value: BlocProvider.of<AuthenticationBloc>(context),
-                    child: LoginScreen()
+                    child: BlocProvider<SignInBloc>(
+                      create: (context) => SignInBloc(
+                          context.read<AuthenticationBloc>().userRepository
+                      ),
+                      child: const SignInScreen(),
+                    )
                 )
             ),
             GoRoute(
