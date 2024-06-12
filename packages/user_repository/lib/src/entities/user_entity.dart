@@ -2,12 +2,14 @@ class MyUserEntity {
   String userId;
   String email;
   String name;
+  bool isAdmin;
   bool hasActiveCart;
 
   MyUserEntity({
     required this.userId,
     required this.email,
     required this.name,
+    required this.isAdmin,
     required this.hasActiveCart});
 
   Map<String,Object> toDocument(){
@@ -15,6 +17,7 @@ class MyUserEntity {
       'userId': userId,
       'email':email,
       'name':name,
+      'isAdmin': isAdmin,
       'hasActiveCart':hasActiveCart
     };
   }
@@ -24,6 +27,7 @@ class MyUserEntity {
         userId: doc['userId'],
         email: doc['email'],
         name: doc['name'],
+        isAdmin: doc['isAdmin'],
         hasActiveCart: doc['hasActiveCart']);
   }
 }

@@ -11,6 +11,7 @@ class MyAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: "Slicey Admin",
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
         colorScheme: ColorScheme.light(
         background: Colors.grey.shade200,

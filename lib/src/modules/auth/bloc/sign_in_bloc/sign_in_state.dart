@@ -18,3 +18,6 @@ final class SignInLoading extends SignInState {
 
 final class SignInSuccess extends SignInState {
 }
+
+final class SignOutSuccess extends SignInState {
+}
