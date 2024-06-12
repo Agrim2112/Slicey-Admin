@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       body: BlocBuilder<AuthenticationBloc,AuthenticationState>(
           builder: (context,state){
             if(state.status==AuthenticationStatus.authenticated){
-              context.go('/home');
+              context.go('/create');
               return Container();
             }
             else if( state.status==AuthenticationStatus.unauthenticated){

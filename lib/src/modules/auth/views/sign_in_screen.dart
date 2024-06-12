@@ -55,6 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: MyTextField(
                           controller: emailController,
                           hintText: 'Email',
+                          maxLines: 1,
                           obscureText: false,
                           keyboardType: TextInputType.emailAddress,
                           prefixIcon: const Icon(CupertinoIcons.mail_solid),
@@ -75,6 +76,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: MyTextField(
                       controller: passwordController,
                       hintText: 'Password',
+                      maxLines: 1,
                       obscureText: obscurePassword,
                       keyboardType: TextInputType.visiblePassword,
                       prefixIcon: const Icon(CupertinoIcons.lock_fill),
