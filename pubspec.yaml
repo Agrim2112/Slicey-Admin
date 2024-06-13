@@ -50,6 +50,7 @@ dev_dependencies:
   go_router: ^10.1.2
   url_strategy: ^0.2.0
   firebase_core: ^2.8.0
+  firebase_storage: ^11.7.7
   bloc: ^8.1.2
   flutter_bloc: ^8.1.5
   equatable: ^2.0.5
