@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:slicey_admin/src/blocs/authentication_bloc/authentication_bloc.dart';
-
+import 'package:slicey_admin/src/modules/create_pizza/bloc/upload_picture_bloc/upload_picture_bloc.dart';
+import 'package:pizza_repository/pizza_repository.dart';
 import '../modules/auth/bloc/sign_in_bloc/sign_in_bloc.dart';
 import '../modules/auth/views/sign_in_screen.dart';
 import '../modules/base/views/base_screen.dart';
@@ -32,9 +33,12 @@ GoRouter router(AuthenticationBloc authBloc) {
               }
               else {
                 return BlocProvider<SignInBloc>(
-                  create: (context) => SignInBloc(
-                    context.read<AuthenticationBloc>().userRepository
-                  ),
+                  create: (context) =>
+                      SignInBloc(
+                          context
+                              .read<AuthenticationBloc>()
+                              .userRepository
+                      ),
                   child: BaseScreen(child),
                 );
               }
@@ -70,7 +74,10 @@ GoRouter router(AuthenticationBloc authBloc) {
               ),
               GoRoute(
                   path: '/create',
-                  builder: (context, state) => const CreateScreen()
+                  builder: (context, state) => BlocProvider(
+                        create: (context) => UploadPictureBloc(FirebasePizzaRepo()),
+                        child: const CreateScreen(),
+                      )
               )
             ]
         )

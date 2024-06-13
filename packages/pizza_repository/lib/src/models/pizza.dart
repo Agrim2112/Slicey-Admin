@@ -1,6 +1,7 @@
 import '../entities/entities.dart';
 import 'macros.dart';
 import 'package:uuid/uuid.dart';
+import 'package:uuid/v1.dart';
 
 class Pizza {
   String pizzaId;
